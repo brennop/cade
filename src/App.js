@@ -1,7 +1,7 @@
 import React from "react";
 import Layers from "./containers/Layers/";
 import { Layout } from "./styles";
-import Code from "./containers/Code/Code";
+import Code from "./containers/Code/";
 
 function App() {
   return (
