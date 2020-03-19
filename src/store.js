@@ -2,12 +2,45 @@ import { createStore } from "redux";
 import dfs from "./util/dfs";
 import getColor from "./util/color";
 
+function ID() {
+  return (
+    "_" +
+    Math.random()
+      .toString(36)
+      .substr(2, 9)
+  );
+}
+
 const initialState = () => ({
-  root: { name: "layer0", children: [], depth: 0, color: getColor() }
+  root: {
+    name: "layer0",
+    children: [],
+    depth: 0,
+    color: getColor(),
+    code: ``,
+    id: ID()
+  },
+  selected: null
 });
 
 function reducer(state = initialState(), action) {
   switch (action.type) {
+    case "CHANGE_CODE":
+      return {
+        ...state,
+        root: dfs(state.root, node => {
+          if (node.id === state.selected.id) {
+            node.code = action.code;
+          }
+          return node;
+        }),
+        selected: { ...state.selected, code: action.code }
+      };
+    case "SELECT_LAYER":
+      return {
+        ...state,
+        selected: { id: action.id, code: action.code }
+      };
     case "ADD_LAYER":
       return {
         ...state,
@@ -19,7 +52,8 @@ function reducer(state = initialState(), action) {
                 name: "layer1",
                 children: [],
                 depth: action.node.depth + 1,
-                color: getColor()
+                color: getColor(),
+                id: ID()
               }
             ];
             return { ...node, children };

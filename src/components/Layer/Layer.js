@@ -6,12 +6,18 @@ import { useDispatch } from "react-redux";
 const Layer = ({ node }) => {
   const dispatch = useDispatch();
 
-  function addLayer() {
+  function addLayer(event) {
+    event.stopPropagation();
     dispatch({ type: "ADD_LAYER", node });
   }
 
+  function selectLayer(event) {
+    event.stopPropagation();
+    dispatch({ type: "SELECT_LAYER", id: node.id, code: node.code });
+  }
+
   return (
-    <Wrapper>
+    <Wrapper onClick={selectLayer}>
       <Main color={node.color}>
         <span>{node.name}</span>
         <Button size="24px" onClick={addLayer}>

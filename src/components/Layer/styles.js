@@ -12,11 +12,15 @@ export const Main = styled.div`
   flex-direction: row;
   justify-content: space-between;
 
-  border-bottom: 2px solid ${props => props.color};
+  border-bottom: 3px solid ${props => props.color};
 
   font-size: 12px;
   font-weight: 500;
   background-color: #fff;
+
+  &:hover {
+    background-color: #f6f6f6;
+  }
 `;
 
 export const Children = styled.div`
