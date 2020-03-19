@@ -17,7 +17,7 @@ const initialState = () => ({
     children: [],
     depth: 0,
     color: getColor(),
-    code: ``,
+    code: "",
     id: ID()
   },
   selected: null

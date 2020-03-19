@@ -13,7 +13,7 @@ const Layer = ({ node }) => {
 
   function selectLayer(event) {
     event.stopPropagation();
-    dispatch({ type: "SELECT_LAYER", id: node.id, code: node.code });
+    dispatch({ type: "SELECT_LAYER", id: node.id, code: node.code || "" });
   }
 
   return (

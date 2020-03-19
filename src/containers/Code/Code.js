@@ -1,7 +1,6 @@
 import React from "react";
 import { Editor } from "./styles";
 import { useDispatch, useSelector } from "react-redux";
-import store from "../../store";
 
 const Code = () => {
   const dispatch = useDispatch();
