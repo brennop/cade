@@ -7,7 +7,7 @@ const Container = styled.div`
 
 const Object = ({ node }) => {
   return (
-    <Container rules={node.rules}>
+    <Container rules={node.code}>
       {node.children.map(child => (
         <Object node={child} />
       ))}
