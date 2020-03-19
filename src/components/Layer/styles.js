@@ -12,14 +12,14 @@ export const Main = styled.div`
   flex-direction: row;
   justify-content: space-between;
 
-  border-bottom: 4px solid ${props => props.color};
+  border-bottom: 2px solid ${props => props.color};
 
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 500;
   background-color: #fff;
 `;
 
 export const Children = styled.div`
-  padding-left: 16px;
+  padding-left: 24px;
   background-color: ${props => props.color};
 `;
