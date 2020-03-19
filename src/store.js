@@ -1,8 +1,9 @@
 import { createStore } from "redux";
 import dfs from "./util/dfs";
+import getColor from "./util/color";
 
 const initialState = () => ({
-  root: { name: "layer0", children: [], depth: 0 }
+  root: { name: "layer0", children: [], depth: 0, color: getColor() }
 });
 
 function reducer(state = initialState(), action) {
@@ -17,7 +18,8 @@ function reducer(state = initialState(), action) {
               {
                 name: "layer1",
                 children: [],
-                depth: action.node.depth + 1
+                depth: action.node.depth + 1,
+                color: getColor()
               }
             ];
             return { ...node, children };

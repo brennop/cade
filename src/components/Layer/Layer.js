@@ -1,6 +1,6 @@
 import React from "react";
 import Button from "../Button";
-import { Wrapper } from "../../components/Layer/styles";
+import { Wrapper, Main, Children } from "../../components/Layer/styles";
 import { useDispatch } from "react-redux";
 
 const Layer = ({ node }) => {
@@ -11,15 +11,17 @@ const Layer = ({ node }) => {
   }
 
   return (
-    <>
-      <Wrapper>
+    <Wrapper>
+      <Main color={node.color}>
         <span>{node.name}</span>
         <Button size="24px" onClick={addLayer}>
           +
         </Button>
-      </Wrapper>
-      {node.children && node.children.map(n => <Layer node={n} />)}
-    </>
+      </Main>
+      <Children color={node.color}>
+        {node.children && node.children.map(n => <Layer node={n} />)}
+      </Children>
+    </Wrapper>
   );
 };
 
