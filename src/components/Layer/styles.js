@@ -23,3 +23,7 @@ export const Children = styled.div`
   padding-left: 16px;
   background-color: ${props => props.color};
 `;
+
+export const Buttons = styled.div`
+  display: flex;
+`;

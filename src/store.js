@@ -61,6 +61,16 @@ function reducer(state = initialState(), action) {
           return node;
         })
       };
+    case "REMOVE_LAYER":
+      return {
+        ...state,
+        root: dfs(state.root, node => {
+          return {
+            ...node,
+            children: node.children.filter(child => child !== action.node)
+          };
+        })
+      };
     default:
       // throw new Error("Action not found");
       return state;

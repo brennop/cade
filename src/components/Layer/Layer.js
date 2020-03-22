@@ -1,6 +1,11 @@
 import React from "react";
 import Button from "../Button";
-import { Wrapper, Main, Children } from "../../components/Layer/styles";
+import {
+  Wrapper,
+  Main,
+  Children,
+  Buttons
+} from "../../components/Layer/styles";
 import { useDispatch, useSelector } from "react-redux";
 
 const Layer = ({ node }) => {
@@ -17,13 +22,23 @@ const Layer = ({ node }) => {
     dispatch({ type: "SELECT_LAYER", id: node.id, code: node.code || "" });
   }
 
+  function removeLayer(event) {
+    event.stopPropagation();
+    dispatch({ type: "REMOVE_LAYER", node });
+  }
+
   return (
     <Wrapper onClick={selectLayer}>
       <Main color={node.color} selected={selected?.id === node.id}>
         <span>{node.name}</span>
-        <Button size="20px" onClick={addLayer}>
-          +
-        </Button>
+        <Buttons>
+          <Button size="20px" margin="0 2px" onClick={removeLayer}>
+            -
+          </Button>
+          <Button size="20px" margin="0 2px" onClick={addLayer}>
+            +
+          </Button>
+        </Buttons>
       </Main>
       <Children color={node.color}>
         {node.children && node.children.map(n => <Layer node={n} />)}
