@@ -16,11 +16,7 @@ export const Main = styled.div`
 
   font-size: 12px;
   font-weight: 500;
-  background-color: #fff;
-
-  &:hover {
-    background-color: #f6f6f6;
-  }
+  background-color: ${({ selected }) => (selected ? "#ededed" : "#fff")};
 `;
 
 export const Children = styled.div`

@@ -1,10 +1,11 @@
 import React from "react";
 import Button from "../Button";
 import { Wrapper, Main, Children } from "../../components/Layer/styles";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const Layer = ({ node }) => {
   const dispatch = useDispatch();
+  const selected = useSelector(store => store.selected);
 
   function addLayer(event) {
     event.stopPropagation();
@@ -18,9 +19,9 @@ const Layer = ({ node }) => {
 
   return (
     <Wrapper onClick={selectLayer}>
-      <Main color={node.color}>
+      <Main color={node.color} selected={selected?.id === node.id}>
         <span>{node.name}</span>
-        <Button size="24px" onClick={addLayer}>
+        <Button size="20px" onClick={addLayer}>
           +
         </Button>
       </Main>

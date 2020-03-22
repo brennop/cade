@@ -1,6 +1,5 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Wrapper } from "./styles";
-import Button from "../../components/Button";
 import { useSelector } from "react-redux";
 import Layer from "../../components/Layer";
 
@@ -10,7 +9,6 @@ const Layers = () => {
   return (
     <Wrapper>
       <Layer node={root} />
-      <Button margin="0.8em">+</Button>
     </Wrapper>
   );
 };
