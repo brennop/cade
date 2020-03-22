@@ -12,7 +12,7 @@ export const Main = styled.div`
   flex-direction: row;
   justify-content: space-between;
 
-  border-bottom: 3px solid ${props => props.color};
+  border-bottom: 4px solid ${props => props.color};
 
   font-size: 12px;
   font-weight: 500;
@@ -24,6 +24,6 @@ export const Main = styled.div`
 `;
 
 export const Children = styled.div`
-  padding-left: 24px;
+  padding-left: 16px;
   background-color: ${props => props.color};
 `;
