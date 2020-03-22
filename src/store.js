@@ -1,5 +1,5 @@
 import { createStore } from "redux";
-import dfs from "./util/dfs";
+import { map, reduce } from "./util/dfs";
 import getColor from "./util/color";
 
 function ID() {
@@ -13,7 +13,7 @@ function ID() {
 
 const initialState = () => ({
   root: {
-    name: "layer0",
+    name: "Layer 0",
     children: [],
     depth: 0,
     color: getColor(),
@@ -28,7 +28,7 @@ function reducer(state = initialState(), action) {
     case "CHANGE_CODE":
       return {
         ...state,
-        root: dfs(state.root, node => {
+        root: map(state.root, node => {
           if (node.id === state.selected.id) {
             node.code = action.code;
           }
@@ -44,12 +44,12 @@ function reducer(state = initialState(), action) {
     case "ADD_LAYER":
       return {
         ...state,
-        root: dfs(state.root, node => {
+        root: map(state.root, node => {
           if (node === action.node) {
             const children = [
               ...node.children,
               {
-                name: "layer1",
+                name: `Layer ${reduce(state.root, (_, acc) => acc + 1, 0)}`,
                 children: [],
                 depth: action.node.depth + 1,
                 color: getColor(),
@@ -64,7 +64,7 @@ function reducer(state = initialState(), action) {
     case "REMOVE_LAYER":
       return {
         ...state,
-        root: dfs(state.root, node => {
+        root: map(state.root, node => {
           return {
             ...node,
             children: node.children.filter(child => child !== action.node)

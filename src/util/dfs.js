@@ -1,8 +1,8 @@
-function dfs(node, f) {
+export function map(node, f) {
   node = f(node);
   if (!node.children) return node;
 
-  const children = node.children.map(c => dfs(c, f));
+  const children = node.children.map(c => map(c, f));
   return { ...node, children };
 }
 
@@ -16,4 +16,3 @@ export function reduce(node, reducer, accumulator) {
   );
 }
 
-export default dfs;
